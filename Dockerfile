@@ -1,16 +1,14 @@
 FROM phusion/baseimage:0.11
 
 MAINTAINER ytzelf
-ENV IPP_VERSION=1.67.162-1
-# ENV IPP_VERSION=1.66.161-1
-# ENV IPP_VERSION=1.61.158-1
+ENV IPP_VERSION=1.69.167-1
 ENV CONFD_VERSION=0.16.0
 
 CMD ["/sbin/my_init"]
 
 # INSTALL EATON IPP
 RUN apt-get update && apt-get install -y wget ssmtp mailutils iptables syslog-ng-core
-RUN wget http://pqsoftware.eaton.com/install/linux/ipp/ipp-linux_${IPP_VERSION}_amd64.deb
+RUN wget http://powerquality.eaton.fr/Support/Software-Drivers/Downloads/IPS/${IPP_VERSION}_amd64.deb
 RUN dpkg -i ipp-linux_${IPP_VERSION}_amd64.deb
 
 # INSTALL CONFD
